@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Miss Universe Philippines 2026 — Evening Gown Designers</title>
+<style>
+  :root {
+    --bg: #0a0710;
+    --bg-2: #1a0f24;
+    --card: #1e1428;
+    --card-2: #271a35;
+    --text: #f4ecf9;
+    --muted: #b8a4cc;
+    --accent: #e8b4d8;
+    --accent-2: #f5d76e;
+    --winner: linear-gradient(135deg, #f5d76e, #e8b4d8);
+    --border: #392750;
+    --shadow: 0 8px 30px rgba(0,0,0,.5);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.55;
+  }
+  header.hero {
+    background:
+      radial-gradient(ellipse at 30% 30%, rgba(232,180,216,.18), transparent 60%),
+      radial-gradient(ellipse at 70% 70%, rgba(245,215,110,.12), transparent 60%),
+      linear-gradient(180deg, #160a22 0%, #0a0710 100%);
+    padding: 70px 28px 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-family: Georgia, 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 54px);
+    font-weight: 400;
+    margin: 0 0 14px;
+    background: var(--winner);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .subtitle {
+    color: var(--muted);
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 16px;
+  }
+  .meta-line {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 16px;
+  }
+  .meta-line strong { color: var(--accent-2); font-weight: 600; }
+
+  .controls {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 24px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+  .controls input, .controls select {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  .controls input { flex: 1 1 240px; min-width: 200px; }
+  .count-pill {
+    background: var(--card-2);
+    color: var(--muted);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    border: 1px solid var(--border);
+  }
+
+  main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 8px 24px 80px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+  }
+  .card.winner {
+    border: 2px solid transparent;
+    background:
+      linear-gradient(var(--card), var(--card)) padding-box,
+      var(--winner) border-box;
+  }
+  .photo-wrap {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: linear-gradient(135deg, #2a1a3a, #1a0f24);
+  }
+  .photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    padding: 16px;
+  }
+  .badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(8px);
+    color: var(--text);
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .crown {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--winner);
+    color: #1a0f24;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .body {
+    padding: 18px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+  .name {
+    font-family: Georgia, serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.2;
+  }
+  .locality {
+    color: var(--accent);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: -4px 0 4px;
+  }
+  .gown-note {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .designer-row {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .designer-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+  }
+  .designer-name {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    color: var(--accent-2);
+  }
+  .links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .ig-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    transition: background .15s, border-color .15s;
+  }
+  .ig-btn:hover { background: var(--card-2); border-color: var(--accent); }
+  .ig-btn.contestant { background: rgba(232,180,216,.08); }
+  .ig-btn.designer { background: rgba(245,215,110,.08); }
+  .ig-btn.unknown { opacity: .45; cursor: not-allowed; }
+  .ig-icon {
+    width: 13px; height: 13px;
+    border-radius: 3px;
+    background: linear-gradient(45deg, #fd1d1d, #833ab4 50%, #f77737);
+    display: inline-block;
+  }
+
+  footer {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  footer h3 {
+    color: var(--accent);
+    font-family: Georgia, serif;
+    font-weight: 500;
+    margin-top: 28px;
+  }
+  footer a { color: var(--accent-2); }
+  .source-list { list-style: none; padding: 0; }
+  .source-list li { margin-bottom: 6px; }
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+    grid-column: 1 / -1;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">Coronation Night · May 2, 2026 · SM MOA Arena</div>
+  <h1>Miss Universe Philippines 2026</h1>
+  <div class="subtitle">Evening gowns and the Filipino designers behind them — a browse-able directory of the candidates who stepped onto coronation night in custom couture.</div>
+  <div class="meta-line">Winner: <strong>Bea Millan-Windorski</strong> (La Union) in <strong>Anthony Ramirez</strong> · Crowned by Maria Ahtisa Manalo · 50 delegates · 17 documented gowns</div>
+</header>
+
+<div class="controls">
+  <input id="search" type="search" placeholder="Search by contestant, locality, or designer…" />
+  <select id="filter-round">
+    <option value="all">All rounds</option>
+    <option value="finals">Coronation Night (Top 7)</option>
+    <option value="prelim">Preliminary (April 5)</option>
+  </select>
+  <select id="filter-designer">
+    <option value="all">All designers</option>
+  </select>
+  <span class="count-pill" id="count">17 contestants</span>
+</div>
+
+<main>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer>
+  <h3>How this directory was built</h3>
+  <p>This page covers the <strong>17 candidates with verified designer credits</strong> from Miss Universe Philippines 2026 — 7 from coronation night (Top 7 final round) and 10 additional standouts from the preliminary evening gown competition on April 5, 2026. The remaining 33 delegates' designers were not publicly documented by mainstream pageant outlets at the time of this compilation.</p>
+  <p><strong>Verified Instagram handles</strong> (sourced directly from photo credits in PEP.ph reporting): @bea.millan.windorski, @justinefelizarta, @bellaysmael, @roxieebae, @aprielsmith, @allyson.hetland, @catwardlee, @lynereewly. Other handles are best-effort lookups; click through to confirm.</p>
+  <p>Photo URLs point to PEP.ph's CDN. If an image doesn't load, click the contestant's Instagram link to see her own posted photo.</p>
+
+  <h3>Sources</h3>
+  <ul class="source-list">
+    <li>· <a href="https://www.pep.ph/lifestyle/fashion/192014/miss-universe-philippines-2026-top-7-evening-gowns-a5128-20260502-lfrm" target="_blank">PEP.ph — Top 7 Coronation Evening Gowns</a></li>
+    <li>· <a href="https://www.pep.ph/lifestyle/fashion/191654/miss-universe-philippines-2026-preliminary-evening-gown-standouts-a721-20260407-lfrm" target="_blank">PEP.ph — 15 Standouts at Preliminary Evening Gown Competition</a></li>
+    <li>· <a href="https://metro.style/fashion/2026/5/2/miss-universe-philippines-2026-top-15-evening-gowns-2300" target="_blank">ABS-CBN Metro.Style — Top 15 Winning Evening Gowns</a></li>
+    <li>· <a href="https://www.thesummitexpress.com/2026/05/full-list-winners-miss-universe-philippines-2026.html" target="_blank">The Summit Express — Full List of Winners</a></li>
+    <li>· <a href="https://en.wikipedia.org/wiki/Miss_Universe_Philippines_2026" target="_blank">Wikipedia — Miss Universe Philippines 2026</a></li>
+    <li>· <a href="https://www.philstar.com/lifestyle/fashion-and-beauty/2026/05/03/2524960/kay-bmw-ang-korona-la-union-wins-miss-universe-philippines-2026" target="_blank">Philstar — Kay BMW ang Korona</a></li>
+  </ul>
+</footer>
+
+<script>
+const DATA = [
+  {
+    name: "Bea Millan-Windorski", locality: "La Union", isWinner: true, round: "finals",
+    gownDesc: "Copper-gold, fully beaded column gown with deep V plunge and chevron beadwork. Titled \"Elyucana.\"",
+    photo: "https://contents.pep.ph/images2/images2/2026/05/02/img-7952-1777732966.jpg",
+    contestantIG: "bea.millan.windorski", contestantVerified: true,
+    designer: "Anthony Ramirez", designerIG: "anthonyramirez_official"
+  },
+  {
+    name: "Jenrose Javier", locality: "Sultan Kudarat", round: "finals",
+    gownDesc: "Fully beaded evening gown in blue-dominant palette with multi-colored crystal embellishment and high right-leg slit.",
+    photo: "https://contents.pep.ph/images2/images2/2026/05/02/img-7941-1777732965.jpg",
+    contestantIG: "jenrosejavier_",
+    designer: "Leo Almodal", designerIG: "leoalmodal"
+  },
+  {
+    name: "Apriel Smith", locality: "Cebu City", round: "finals",
+    gownDesc: "White column gown with asymmetrical neckline and a diagonal gold-embellished panel running shoulder-to-hem.",
+    photo: "https://contents.pep.ph/images2/images2/2026/05/02/img-7984-1777732968.jpg",
+    contestantIG: "aprielsmith", contestantVerified: true,
+    designer: "Harvey Cenit", designerIG: "harvey_cenit"
+  },
+  {
+    name: "Marian Arellano", locality: "Tarlac", round: "finals",
+    gownDesc: "White satin skirt with sheer illusion bodice, long sleeves, geometric lattice beadwork, diagonal sash to hip.",
+    photo: "https://contents.pep.ph/images2/images2/2026/05/02/img-7963-1777732967.jpg",
+    contestantIG: "marian.arlln",
+    designer: "Rian Fernandez", designerIG: "rianfernandez888"
+  },
+  {
+    name: "Bella Ysmael", locality: "Taguig", round: "finals",
+    gownDesc: "Gold and white halter gown with pleated chiffon cape; symmetrical gold embellishment along torso. Swan Lake-inspired.",
+    photo: "https://contents.pep.ph/images2/images2/2026/05/02/img-7957-1777732966.jpg",
+    contestantIG: "bellaysmael", contestantVerified: true,
+    designer: "Rian Fernandez", designerIG: "rianfernandez888"
+  },
+  {
+    name: "Nicole Borromeo", locality: "Cebu Province", round: "finals",
+    gownDesc: "One-shoulder gown in blue-to-black sequined gradient, organic flame-like appliqué, sheer back panel.",
+    photo: "https://contents.pep.ph/images2/images2/2026/05/02/img-7981-1777732967.jpg",
+    contestantIG: "nicole.borromeo",
+    designer: "Rian Fernandez", designerIG: "rianfernandez888"
+  },
+  {
+    name: "Allyson Hetland", locality: "Pampanga", round: "finals",
+    gownDesc: "Gold mermaid silhouette with sculpted off-shoulder neckline, sheer side panels, draped cape and light train.",
+    photo: "https://contents.pep.ph/images2/images2/2026/05/02/img-7987-1777732968.jpg",
+    contestantIG: "allyson.hetland", contestantVerified: true,
+    designer: "Mak Tumang", designerIG: "maktumang"
+  },
+  {
+    name: "Justine Felizarta", locality: "Manila", round: "prelim",
+    gownDesc: "Striking hot pink draped creation — \"Filipina Barbie\" energy.",
+    photo: "https://contents.pep.ph/images2/images2/2026/04/06/muph-1-1775485785.jpg",
+    contestantIG: "justinefelizarta", contestantVerified: true,
+    designer: "Daniel Manila", designerIG: "danielmanilacreateur"
+  },
+  {
+    name: "Roxie Baeyens", locality: "Baguio", round: "prelim",
+    gownDesc: "Silver one-shoulder trumpet gown with embellishments and fluid lines suggesting ocean waves.",
+    photo: "https://contents.pep.ph/images2/images2/2026/04/06/muph5-1775486884.jpg",
+    contestantIG: "roxieebae", contestantVerified: true,
+    designer: "Rian Fernandez", designerIG: "rianfernandez888"
+  },
+  {
+    name: "Catherine Wardle", locality: "Samar Island", round: "prelim",
+    gownDesc: "Tiffany blue evening gown with jewel embellishments.",
+    photo: "https://contents.pep.ph/images2/images2/2026/04/06/muph-samar-1775488931.jpg",
+    contestantIG: "catwardlee", contestantVerified: true,
+    designer: "Leo Almodal", designerIG: "leoalmodal"
+  },
+  {
+    name: "Kathlene Dale Caseñas", locality: "Bohol", round: "prelim",
+    gownDesc: "Radiant gold gown with structured bodice and cascading embellishments.",
+    photo: "https://contents.pep.ph/images2/images2/2026/04/06/muph-ilo-1775487983.jpg",
+    contestantIG: "kathcasenas",
+    designer: "Paul Semira", designerIG: "ipsemira"
+  },
+  {
+    name: "Ysabel Prats", locality: "Laguna", round: "prelim",
+    gownDesc: "Light icy blue evening gown with shimmering crystal-like embellishments.",
+    photo: "https://contents.pep.ph/images2/images2/2026/04/07/muph-laguna-1775492258.jpg",
+    contestantIG: "ysabel.prats__",
+    designer: "A.M. Palatino Dalagan", designerIG: "amdalagan"
+  },
+  {
+    name: "Jacqueline Gulrajani", locality: "Tacloban", round: "prelim",
+    gownDesc: "Gold and blue evening gown with stained-glass–inspired hues.",
+    photo: "https://contents.pep.ph/images2/images2/2026/04/07/mauph-tacloban-1775492540.jpg",
+    contestantIG: "jacqyraj",
+    designer: "Louis Pangilinan", designerIG: "louispangilinan.ph"
+  },
+  {
+    name: "Alexandria Colmenares", locality: "Negros Occidental", round: "prelim",
+    gownDesc: "Radiant gold gown — \"Gold Perfection,\" inspired by Negros Sugarlands.",
+    photo: "https://contents.pep.ph/images2/images2/2026/04/07/muph-negrosocc-1775493131.jpg",
+    contestantIG: "lexicolme",
+    designer: "Gee Ai Miranda", designerIG: null
+  },
+  {
+    name: "Lyneree Wly Montero-Yodong", locality: "Mountain Province", round: "prelim",
+    gownDesc: "Custom teal serpentine gown with tambour beadwork and fern-inspired embellishments from Sagada's Blue Soil Hills.",
+    photo: "https://contents.pep.ph/images2/images2/2026/04/07/muph-lyneree-1775491909.jpg",
+    contestantIG: "lynereewly", contestantVerified: true,
+    designer: "Ehrran Montoya", designerIG: "ehrranmontoya"
+  },
+  {
+    name: "Zestah Espinosa", locality: "Iloilo City", round: "prelim",
+    gownDesc: "Rice-harvest tribute — beadwork on bodice symbolizing patience and sacrifice; kalalaw-woven skirt. (Espinosa swapped to a backup gown at finals after a last-minute issue.)",
+    photo: "https://contents.pep.ph/images2/images2/2026/04/07/muphiloilo-1775492794.jpg",
+    contestantIG: "_zestahespinosa",
+    designer: "Alfie Desamparado", designerIG: "atelier_desamparado"
+  },
+  {
+    name: "Chrystel Mae Correos", locality: "Tandag", round: "prelim",
+    gownDesc: "Fully embellished gown with dramatic white feather plumes.",
+    photo: "https://contents.pep.ph/images2/images2/2026/04/07/muph-tandaf-1775493485.jpg",
+    contestantIG: "chrystelcorreos",
+    designer: "Rian Fernandez", designerIG: "rianfernandez888"
+  }
+];
+
+function igLink(handle) { return `https://www.instagram.com/${handle}/`; }
+
+function render(items) {
+  const grid = document.getElementById("grid");
+  if (!items.length) {
+    grid.innerHTML = '<div class="empty-state">No matches. Try another search.</div>';
+    return;
+  }
+  grid.innerHTML = items.map(c => {
+    const roundBadge = c.round === "finals" ? "Top 7 Final" : "Preliminary";
+    const crownBadge = c.isWinner ? '<div class="crown">★ Winner</div>' : "";
+    const designerBtn = c.designerIG
+      ? `<a class="ig-btn designer" href="${igLink(c.designerIG)}" target="_blank" rel="noopener"><span class="ig-icon"></span>@${c.designerIG}</a>`
+      : `<span class="ig-btn designer unknown"><span class="ig-icon"></span>Designer IG unknown</span>`;
+    const contestantBtn = c.contestantIG
+      ? `<a class="ig-btn contestant" href="${igLink(c.contestantIG)}" target="_blank" rel="noopener"><span class="ig-icon"></span>@${c.contestantIG}${c.contestantVerified ? " ✓" : ""}</a>`
+      : `<span class="ig-btn contestant unknown"><span class="ig-icon"></span>IG unknown</span>`;
+    return `
+      <article class="card ${c.isWinner ? 'winner' : ''}">
+        <div class="photo-wrap">
+          <div class="photo-fallback">Photo from PEP.ph<br>${c.name}</div>
+          <img src="${c.photo}" alt="${c.name} in evening gown" loading="lazy" onerror="this.style.display='none'" referrerpolicy="no-referrer" />
+          <div class="badge">${roundBadge}</div>
+          ${crownBadge}
+        </div>
+        <div class="body">
+          <h2 class="name">${c.name}</h2>
+          <div class="locality">${c.locality}</div>
+          <p class="gown-note">${c.gownDesc}</p>
+          <div class="designer-row">
+            <div class="designer-label">Designed by</div>
+            <div class="designer-name">${c.designer}</div>
+            <div class="links">
+              ${contestantBtn}
+              ${designerBtn}
+            </div>
+          </div>
+        </div>
+      </article>`;
+  }).join("");
+  document.getElementById("count").textContent = `${items.length} contestant${items.length === 1 ? "" : "s"}`;
+}
+
+function populateDesignerFilter() {
+  const sel = document.getElementById("filter-designer");
+  const set = [...new Set(DATA.map(d => d.designer))].sort();
+  set.forEach(d => {
+    const o = document.createElement("option");
+    o.value = d; o.textContent = d;
+    sel.appendChild(o);
+  });
+}
+
+function applyFilters() {
+  const q = document.getElementById("search").value.trim().toLowerCase();
+  const round = document.getElementById("filter-round").value;
+  const designer = document.getElementById("filter-designer").value;
+  const filtered = DATA.filter(c => {
+    if (round !== "all" && c.round !== round) return false;
+    if (designer !== "all" && c.designer !== designer) return false;
+    if (q) {
+      const hay = `${c.name} ${c.locality} ${c.designer}`.toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  // Winner first, then by round (finals -> prelim), then alphabetical
+  filtered.sort((a, b) => {
+    if (a.isWinner !== b.isWinner) return a.isWinner ? -1 : 1;
+    if (a.round !== b.round) return a.round === "finals" ? -1 : 1;
+    return a.name.localeCompare(b.name);
+  });
+  render(filtered);
+}
+
+populateDesignerFilter();
+applyFilters();
+document.getElementById("search").addEventListener("input", applyFilters);
+document.getElementById("filter-round").addEventListener("change", applyFilters);
+document.getElementById("filter-designer").addEventListener("change", applyFilters);
+</script>
+</body>
+</html>
